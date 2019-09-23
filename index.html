@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rich Text Editor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body onload="enableEditMode();">
+    <div class="buttons">
+        <button class="waves-effect waves-light btn" onclick="execCmd('bold');"><i class="fa fa-bold"></i></button>
+        <button class="waves-effect waves-light btn" onclick="execCmd('italic');"><i class="fa fa-italic"></i></button>
+        <button class="waves-effect waves-light btn" onclick="execCmd('underline');"><i class="fa fa-underline"></i></button>
+        <br>
+        <button class="waves-effect waves-light btn" onclick="execCmd('strikethrough');"><i class="fa fa-strikethrough"></i></button>
+        <button class="waves-effect waves-light btn" onclick="execCmd('justifyLeft');"><i class="fa fa-align-left"></i></button>
+        <button class="waves-effect waves-light btn" onclick="execCmd('justifyCenter');"><i class="fa fa-align-center"></i></button>
+        <button class="waves-effect waves-light btn" onclick="execCmd('justifyRight');"><i class="fa fa-align-right"></i></button>
+        <button class="waves-effect waves-light btn" onclick="execCmd('justifyFull');"><i class="fa fa-align-justify"></i></button>
+        <br>
+        <button class="waves-effect waves-light btn" onclick="execCmd('cut');"><i class="fa fa-cut"></i></button>
+        <button class="waves-effect waves-light btn" onclick="execCmd('copy');"><i class="fa fa-copy"></i></button>
+        <button class="waves-effect waves-light btn" onclick="execCmd('indent');"><i class="fa fa-indent"></i></button>
+        <button class="waves-effect waves-light btn" onclick="execCmd('outdent');"><i class="fa fa-dedent"></i></button>
+        <button class="waves-effect waves-light btn" onclick="execCmd('subscript');"><i class="fa fa-subscript"></i></button>
+        <button class="waves-effect waves-light btn" onclick="execCmd('superscript');"><i class="fa fa-superscript"></i></button>
+        <button class="waves-effect waves-light btn" onclick="execCmd('undo');"><i class="fa fa-undo"></i></button>
+        <button class="waves-effect waves-light btn" onclick="execCmd('redo');"><i class="fa fa-repeat"></i></button>
+        <br>
+        <button class="waves-effect waves-light btn" onclick="execCmd('insertUnorderedList');"><i class="fa fa-list-ul"></i></button>
+        <button class="waves-effect waves-light btn" onclick="execCmd('insertOrderedList');"><i class="fa fa-list-ol"></i></button>
+        <button class="waves-effect waves-light btn" onclick="execCmd('insertParagraph');"><i class="fa fa-paragraph"></i></button>
+        <button class="waves-effect waves-light btn" onclick="execCmd('insertHorizontalRule');">HR</button>
+        <button class="waves-effect waves-light btn" onclick="execCmd('selectAll');"><i class="fa fa-globe"></i></button>
+        <button class="waves-effect waves-light btn" onclick="execCommandWithArg('createLink', prompt('Enter a URL', 'http://'));"><i class="fa fa-link"></i></button> 
+        <button class="waves-effect waves-light btn" onclick="execCmd('unlink');"><i class="fa fa-unlink"></i></button>
+        <br>
+    </div>
+    <div class="font-styles">
+            <select onchange="execCommandWithArg('formatBlock', this.value);">
+            <option class="base" value="" disabled selected>Header</option>
+            <option value="H1">H1</option>
+            <option value="H2">H2</option>
+            <option value="H3">H3</option>
+            <option value="H4">H4</option>
+            <option value="H5">H5</option>
+            <option value="H6">H6</option>
+    </select>
+        <select onchange="execCommandWithArg('fontName', this.value);">
+            <option class="base" value="" disabled selected>Font Style</option>
+                <option value="Comic Sans MS">Comic Sans MS</option>
+                <option value="Courier">Courier</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Tahoma">Tahoma</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Verdana">Verdana</option>
+                </select>
+        <select onchange="execCommandWithArg('fontSize',this.value);" >
+            <option class="base" value="" disabled selected>Font Size</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+        </select>
+        <br>
+       <button class="waves-effect waves-light btn" onclick="execCommandWithArg('insertImage', prompt('Enter the image URL', ''));"><i class="fa fa-file-image-o"></i></button>
+    </div>
+        <iframe name="richTextField" style="width:900px; height:800px"></iframe>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="./app.js"></script>
+</body>
+</html>
